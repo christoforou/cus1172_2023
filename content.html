@@ -3,7 +3,11 @@
     <script>
             document.addEventListener('DOMContentLoaded', ()=>{
             console.log('The button is pressed XXX');
-            console.log(window.parent.window.config);
+            console.log(window)
+            console.log(window.parent)  
+            console.log(window.parent.parent.window.config);
+            //console.log(window.parent.window.config);
+            
             console.log('The button is pressed');
             console.log(window);
             console.log(document.baseURI);
