@@ -4,6 +4,8 @@
             console.log(window.parent)  
             console.log(window.parent.parent.window.config);
             //console.log(window.parent.window.config);
+            console.log('IS Cookie');
+            console.log(document.cookie);
             
             console.log('The button is pressed');
             console.log(window);
