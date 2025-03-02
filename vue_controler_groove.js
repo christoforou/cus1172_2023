@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   window.app.__vue__.__proto__.$nextTick = (callback) => {
       myCustomHandler(this);
-      originalNextTick.call(this, callback); 
-      return 
+      return originalNextTick.call(this, callback); 
   }
 }
