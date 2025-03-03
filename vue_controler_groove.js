@@ -1,5 +1,7 @@
-document.addEventListener('DOMContentLoaded', function() {
-  
+
+window.setTimeout(()=> {alert("Testing Event")}, 1000)
+
+document.addEventListener('DOMContentLoaded', function() {  
   alert("Installing DOM observer");
   
   // Your custom function
@@ -21,5 +23,4 @@ document.addEventListener('DOMContentLoaded', function() {
       myCustomHandler(this);
       return originalNextTick.call(this, callback); 
   }
-
 })
