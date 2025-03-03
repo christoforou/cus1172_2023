@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('The button is pressed XXX Automatics Version');
     console.log(window)
     console.log(window.parent)  
-    onsole.log(window.parent.parent.window.config);
+    console.log(window.parent.parent.window.config);
     console.log('The button is pressed');
     console.log(window);
     console.log(document.baseURI);
