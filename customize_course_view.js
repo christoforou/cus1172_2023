@@ -1,25 +1,24 @@
-window.setTimeout(()=> {alert("Testing Event")}, 1000)
-
 document.addEventListener('DOMContentLoaded', function() {  
-  alert("Installing DOM observer");
+
+
+    console.log('The button is pressed XXX Automatics Version');
+    console.log(window)
+    console.log(window.parent)  
+    onsole.log(window.parent.parent.window.config);
+    console.log('The button is pressed');
+    console.log(window);
+    console.log(document.baseURI);
+    console.log('IS Cookie');
+    console.log(document.cookie);
+
+    console.log(document.parent);
+    console.log(window.parent.window.config);
+    console.log(window.parent.window.document);
+    console.log('The button is pressed END');
+    window.document.querySelector('#myFrameMain').src='https://preactjs.com/tutorial/01-vdom/';
+    window.parent.window.document.querySelector("#app").style.backgroundColor = 'blue';     
+    //
   
-  // Your custom function
-  function myCustomHandler(event) {
-    console.log('$nextTick was called!');
-    console.log(window.app.__vue__.$route)
-    console.log(event);
-    try {
-      document.querySelector(".post-canvas-container").className = 'w-full md:w-full post-canvas-container';
-      document.querySelector(".post-canvas-container").parentElement.firstChild.className = 'md:w-1/12 w-full flex flex-col space-y-5 md:mt-0 mt-5'
-    } catch(error) {
-      console.error(error);
-    }
-    
-  }
-  const originalNextTick  = window.app.__vue__.__proto__.$nextTick;
-  
-  window.app.__vue__.__proto__.$nextTick = (callback) => {
-      myCustomHandler(this);
-      return originalNextTick.call(this, callback); 
-  }
+    window.parent.window.document.querySelector(".post-canvas-container").className = 'w-full md:w-full post-canvas-container';
+    window.parent.window.document.querySelector(".post-canvas-container").parentElement.firstChild.className 'md:w-1/12 w-full flex flex-col space-y-5 md:mt-0 mt-5'
 })
