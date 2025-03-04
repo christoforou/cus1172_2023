@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // make the iframe invisible, not occupying space in the window. - might need to change that to some heigh - or position absolute to control view
     // For now, make the component, zero height instead of hidden.
     //window.parent.window.document.querySelector(".custom-embed-iframe").className = '.custom-embed-iframe hidden'
-    window.parent.window.document.querySelector(".custom-embed-iframe").style.height="0px"
+    //window.parent.window.document.querySelector(".custom-embed-iframe").style.height="0px"
     window.parent.window.document.querySelector(".custom-embed-iframe").id = "rki_custom_course_view"
 
 
