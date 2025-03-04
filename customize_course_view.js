@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {  
 
 
+    // Extract information
+    data_name = window.parent.document.querySelector("span.hidden").innerHTML
+    
     console.log('The button is pressed XXX Automatics Version');
     console.log(window)
     console.log(window.parent)  
@@ -30,6 +33,16 @@ document.addEventListener('DOMContentLoaded', function() {
     //window.parent.window.document.querySelector(".custom-embed-iframe").className = '.custom-embed-iframe hidden'
     window.parent.window.document.querySelector(".custom-embed-iframe").style.height="0px"
     window.parent.window.document.querySelector(".custom-embed-iframe").id = "rki_custom_course_view"
+
+
+    // Add a new notebook
+
+    notebook = 'https://christoforou.github.io/cus1172_2023/advanced_outputs.html'
+    let newElement = document.createElement("iframe")
+    newElement.src = notebook
+    newElement.width="100%"
+    
+    window.document.querySelector("body").append(newElement)
     
     
 
