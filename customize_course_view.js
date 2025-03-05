@@ -31,11 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // make the iframe invisible, not occupying space in the window. - might need to change that to some heigh - or position absolute to control view
     // For now, make the component, zero height instead of hidden.
     //window.parent.window.document.querySelector(".custom-embed-iframe").className = '.custom-embed-iframe hidden'
-    window.parent.window.document.querySelector(".custom-embed-iframe").style.height="4000px"
+    
+    // Need to calculate this based on the content I want to embed - Get this information from an asynch request to the conten generation application. . 
+    window.parent.window.document.querySelector(".custom-embed-iframe").style.height="6600px"
 
     
     window.parent.window.document.querySelector(".custom-embed-iframe").id = "rki_custom_course_view"
-
 
     // Add a new notebook
 
@@ -43,13 +44,14 @@ document.addEventListener('DOMContentLoaded', function() {
     let newElement = document.createElement("iframe")
     newElement.src = notebook
     newElement.width="100%"
-    newElement.height="3900px" 
+    
+    newElement.height="6600px"    // TODO - Get the values of pixels of the height based on the applications TODO
     
     window.document.querySelector("body").append(newElement)
     window.chrisConfig = "Testing"
     
     // Operate on the iframe context to style the iframe created above. 
-    window.document.querySelector("iframe").frameBorder = 4
+    window.document.querySelector("iframe").frameBorder = 2
     
     
 
