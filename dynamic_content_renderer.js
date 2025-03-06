@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let newElement = document.createElement("iframe")
   newElement.src = notebook
   newElement.width="100%"       
-  newElement.height="600px"    // TODO - Get the values of pixels of the height based on the applications TODO
+  newElement.height="6600px"    // TODO - Get the values of pixels of the height based on the applications TODO
   newElement.onload = () => { newElement.style.heigh = newElement.contentWindow.document.body.scrollHeight + 'px'}
     
     
