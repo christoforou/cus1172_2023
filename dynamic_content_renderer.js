@@ -18,16 +18,21 @@ document.addEventListener('DOMContentLoaded', function() {
     membership_content_NodeList = window.parent.window.document.querySelectorAll(".membership-content-section") 
     num_content_elements = membership_content_NodeList.length
 
-    const dynamic_content_pattern = "Dynamic Content"
+    const dynamic_content_pattern = "{{RKI_DYNAMIC_CONTENT}}"
+    const renderer_pattern = "{{RKI_RENDERER}}"
+    
     section_titles = []
     dynamic_content_sections_indexes = [] 
-    embedding_section_index = []
+    embedding_section_indexs = []
     
     for (let i = 0; i < membership_content_NodeList.length; i++) {
         section_titles.push(membership_content_NodeList[i].querySelector("p").innerText)
         
         if (section_titles[i].includes(dynamic_content_pattern)){
             dynamic_content_sections_indexes.push(i)
+        }
+        if (section_titles[i].includes(renderer_pattern)){
+            embedding_section_indexs.push(i)
         }
     }
 
