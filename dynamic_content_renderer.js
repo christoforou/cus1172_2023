@@ -52,6 +52,10 @@ document.addEventListener('DOMContentLoaded', function() {
   if (editing_mode) {
     // Do not inject. 
     console.log("In Edit mode, do not inject the text")
+    membership_content_NodeList[dynamic_section_index].querySelector("h1, h2, p").innerText += dynamic_content_JSON.title
+    membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").append(newElement)
+
+      
   } else {    
     // Erase existing contnet in dyamic section, update title, inject content.
     membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").innerHTML = ""
