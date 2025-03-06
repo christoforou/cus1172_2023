@@ -36,35 +36,37 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-
-  // Get Dynamic element for the content - should be in a for loop 
-  dynamic_section_index = dynamic_content_sections_indexes[0]
-  dynamic_content_metadata = membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").innerText
-  dynamic_content_JSON = JSON.parse(dynamic_content_metadata);
-
-  // Create a reference to the component to load. 
-  notebook = `https://christoforou.github.io/cus1172_2023/${dynamic_content_JSON.content}`
-  let newElement = document.createElement("iframe")
-  newElement.src = notebook
-  newElement.width="100%"       
-  newElement.height="6600px"    // TODO - Get the values of pixels of the height based on the applications TODO
-  newElement.onload = () => { newElement.style.heigh = newElement.contentWindow.document.body.scrollHeight + 'px'}
-    
-    
-  if (editing_mode) {
-    // Do not inject. 
-    console.log("In Edit mode, do not inject the text")
-    membership_content_NodeList[dynamic_section_index].querySelector("h1, h2, p").innerText += dynamic_content_JSON.title
-    membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").append(newElement)
-
-      
-  } else {    
-    // Erase existing contnet in dyamic section, update title, inject content.
-    membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").innerHTML = ""
-    membership_content_NodeList[dynamic_section_index].querySelector("h1, h2, p").innerText = dynamic_content_JSON.title
-    membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").append(newElement)
-
-  } // end of not in edit mode. 
+  // Repeat for every dynamic content in the page. 
+  for (dynamic_section_index of dynamic_content_sections_indexes) {
+          // Get Dynamic element for the content - should be in a for loop 
+          //dynamic_section_index = dynamic_content_sections_indexes[0]
+          dynamic_content_metadata = membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").innerText
+          dynamic_content_JSON = JSON.parse(dynamic_content_metadata);
+        
+          // Create a reference to the component to load. 
+          notebook = `https://christoforou.github.io/cus1172_2023/${dynamic_content_JSON.content}`
+          let newElement = document.createElement("iframe")
+          newElement.src = notebook
+          newElement.width="100%"       
+          newElement.height="6600px"    // TODO - Get the values of pixels of the height based on the applications TODO
+          newElement.onload = () => { newElement.style.heigh = newElement.contentWindow.document.body.scrollHeight + 'px'}
+            
+            
+          if (editing_mode) {
+            // Do not inject. 
+            console.log("In Edit mode, do not inject the text")
+            membership_content_NodeList[dynamic_section_index].querySelector("h1, h2, p").innerText += dynamic_content_JSON.title
+            membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").append(newElement)
+        
+              
+          } else {    
+            // Erase existing contnet in dyamic section, update title, inject content.
+            membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").innerHTML = ""
+            membership_content_NodeList[dynamic_section_index].querySelector("h1, h2, p").innerText = dynamic_content_JSON.title
+            membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").append(newElement)
+        
+          } // end of not in edit mode. 
+}
 
 // After updating all dynamic contents - hide the embedding section from the live website. 
 if (!editing_mode) {
