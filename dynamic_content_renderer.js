@@ -59,7 +59,10 @@ document.addEventListener('DOMContentLoaded', function() {
     membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").append(newElement)
 
   } // end of not in edit mode. 
-    
 
+// After updating all dynamic contents - hide the embedding section from the live website. 
+if (!editing_mode) {
+    membership_content_NodeList[embedding_section_indexs[0]].className="hidden"
+}
 
 })
