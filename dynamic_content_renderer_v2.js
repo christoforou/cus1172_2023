@@ -1,5 +1,4 @@
 
-
 document.addEventListener('DOMContentLoaded', function() {  
 
     // Extract information from the parent window. 
@@ -41,7 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
           // Get Dynamic element for the content - should be in a for loop 
           //dynamic_section_index = dynamic_content_sections_indexes[0]
           dynamic_content_metadata = membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").innerText
-          dynamic_content_JSON = JSON.parse(dynamic_content_metadata);
+          dynamic_content_JSON =  JSON.parse(dynamic_content_metadata.replaceAll(/\u00a0/g, ' '))  // remove nbsp characters.
+          
         
           // Create a reference to the component to load. 
           notebook = `https://christoforou.github.io/cus1172_2023/${dynamic_content_JSON.content}`
