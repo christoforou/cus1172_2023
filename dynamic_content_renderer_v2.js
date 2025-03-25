@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'groove_token' : `${document_cookie}`,
                  },
                 body : JSON.stringify({
                     'groove_token' : `${document_cookie}`,
