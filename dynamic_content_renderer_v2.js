@@ -1,5 +1,5 @@
 
-document.addEventListener('DOMContentLoaded', function() {  
+document.addEventListener('DOMContentLoaded', async function() {  
 
     // Extract information from the parent window. 
     editing_mode = document.baseURI.includes("/edit")            
@@ -41,8 +41,32 @@ document.addEventListener('DOMContentLoaded', function() {
           //dynamic_section_index = dynamic_content_sections_indexes[0]
           dynamic_content_metadata = membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").innerText
           dynamic_content_JSON =  JSON.parse(dynamic_content_metadata.replaceAll(/\u00a0/g, ' '))  // remove nbsp characters.
-          
+
+            let base_url = "https://x97k2snqkd.execute-api.us-east-1.amazonaws.com/Prod/renderer"
+
+            content =  encodeURIComponent(dynamic_content_JSON.content);
+            repo =  encodeURIComponent(dynamic_content_JSON.repo);
+            get_resource_URI = `${base_url}/getResourceURL/${repo}/${content}`
+            
+            URI_Request_params = {
+                method : "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'groove_token' : `${document_cookie}`,
+                 },
+                body : JSON.stringify({
+                    'groove_token' : `${document_cookie}`,
+                    })
+            }
         
+            myresponse = await fetch(get_resource_URI,URI_Request_params)
+            const myresponse_json = await myresponse.json();
+            console.log(myresponse_json);
+            
+          
+           
+      
           // Create a reference to the component to load. 
           notebook = `https://christoforou.github.io/cus1172_2023/${dynamic_content_JSON.content}`
           let newElement = document.createElement("iframe")
