@@ -67,12 +67,13 @@ document.addEventListener('DOMContentLoaded', async function() {
            
       
           // Create a reference to the component to load. 
-          notebook = `https://christoforou.github.io/cus1172_2023/${dynamic_content_JSON.content}`
+          //notebook = `https://christoforou.github.io/cus1172_2023/${dynamic_content_JSON.content}`
+          notebook = myresponse_json.iframe_src
           let newElement = document.createElement("iframe")
           newElement.src = notebook
           newElement.width="100%"       
-          newElement.height="6600px"    // TODO - Get the values of pixels of the height based on the applications TODO
-          newElement.onload = () => { newElement.style.heigh = newElement.contentWindow.document.body.scrollHeight + 'px'}
+          newElement.height= dynamic_content_JSON.height     // TODO - Get the values of pixels of the height based on the applications TODO
+          //newElement.onload = () => { newElement.style.heigh = newElement.contentWindow.document.body.scrollHeight + 'px'}
             
             
           if (editing_mode) {
