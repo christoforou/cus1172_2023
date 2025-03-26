@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     window_config = window.parent.parent.window.config
     document_baseURI = document.baseURI
     document_cookie = document.cookie
-    preview_token = `token=${JSON.parse(window.localStorage.user).token}`
+   
 
     // Adjust the style : Hide the left sidebar and make the right main content full screen.
     window.parent.window.document.querySelector(".post-canvas-container").className = 'w-full md:w-full post-canvas-container';
@@ -61,7 +61,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                     })
             }
             if (editing_mode) {
-                // Send a preview token instead 
+                // If in edit mode - use the corresponding token
+                preview_token = `token=${JSON.parse(window.localStorage.user).token}`
                 URI_Request_params.body = JSON.stringify({
                     'groove_token' : `${preview_token}`,
                     'mode' : `preview`
@@ -89,7 +90,7 @@ document.addEventListener('DOMContentLoaded', async function() {
           if (editing_mode) {
             // Do not inject. 
             console.log("In Edit mode, do not inject the text")
-            membership_content_NodeList[dynamic_section_index].querySelector("h1, h2, p").innerText += dynamic_content_JSON.title
+            membership_content_NodeList[dynamic_section_index].querySelector("h1, h2, p").innerText = dynamic_content_pattern + dynamic_content_JSON.title
             membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").append(newElement)
         
               
