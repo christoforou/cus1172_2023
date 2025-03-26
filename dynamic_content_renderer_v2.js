@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     window_config = window.parent.parent.window.config
     document_baseURI = document.baseURI
     document_cookie = document.cookie
+    preview_token = `token=${JSON.parse(window.localStorage.user).token}`
 
     // Adjust the style : Hide the left sidebar and make the right main content full screen.
     window.parent.window.document.querySelector(".post-canvas-container").className = 'w-full md:w-full post-canvas-container';
@@ -56,9 +57,18 @@ document.addEventListener('DOMContentLoaded', async function() {
                  },
                 body : JSON.stringify({
                     'groove_token' : `${document_cookie}`,
+                    'mode' : `view`
                     })
             }
-        
+            if (editing_mode) {
+                // Send a preview token instead 
+                URI_Request_params.body = JSON.stringify({
+                    'groove_token' : `${preview_token}`,
+                    'mode' : `preview`
+                    })
+            }
+
+              
             myresponse = await fetch(get_resource_URI,URI_Request_params)
             const myresponse_json = await myresponse.json();
             console.log(myresponse_json);
