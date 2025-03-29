@@ -94,17 +94,18 @@ document.addEventListener('DOMContentLoaded', async function() {
             console.log("In Edit mode, do not inject the text")
             membership_content_NodeList[dynamic_section_index].querySelector("h1, h2, p").innerText = dynamic_content_pattern + dynamic_content_JSON.title
             membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").append(newElement)
-            membership_content_NodeList[dynamic_section_index].classList.add("hidden")
+            membership_content_NodeList[dynamic_section_index].classList.remove("hidden")
         
               
-          } else {    
+          } else {   
             // Erase existing contnet in dyamic section, update title, inject content.
             membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").innerHTML = ""
             membership_content_NodeList[dynamic_section_index].querySelector("h1, h2, p").innerText = dynamic_content_JSON.title
             membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").append(newElement)
-            membership_content_NodeList[dynamic_section_index].classList.add("hidden")
-        
-        
+            if (myresponse_json.iframe_src) {
+                // Only show if the fame is available
+                membership_content_NodeList[dynamic_section_index].classList.remove("hidden")
+            }
           } // end of not in edit mode. 
 }
 
