@@ -30,9 +30,11 @@ document.addEventListener('DOMContentLoaded', async function() {
         
         if (section_titles[i].includes(dynamic_content_pattern)){
             dynamic_content_sections_indexes.push(i)
+            membership_content_NodeList[i].classList.add("hidden")  // temp hide
         }
         if (section_titles[i].includes(renderer_pattern)){
             embedding_section_indexs.push(i)
+            membership_content_NodeList[i].classList.add("hidden")
         }
     }
 
@@ -92,6 +94,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             console.log("In Edit mode, do not inject the text")
             membership_content_NodeList[dynamic_section_index].querySelector("h1, h2, p").innerText = dynamic_content_pattern + dynamic_content_JSON.title
             membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").append(newElement)
+            membership_content_NodeList[i].classList.remove("hidden")
         
               
           } else {    
@@ -99,6 +102,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").innerHTML = ""
             membership_content_NodeList[dynamic_section_index].querySelector("h1, h2, p").innerText = dynamic_content_JSON.title
             membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").append(newElement)
+            membership_content_NodeList[i].classList.add("hidden")
         
           } // end of not in edit mode. 
 }
