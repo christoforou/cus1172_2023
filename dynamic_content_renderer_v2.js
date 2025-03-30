@@ -101,8 +101,10 @@ document.addEventListener('DOMContentLoaded', async function() {
             // Erase existing contnet in dyamic section, update title, inject content.
             membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").innerHTML = ""
             membership_content_NodeList[dynamic_section_index].querySelector("h1, h2, p").innerText = dynamic_content_JSON.title
+            
             membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").append(newElement)
-            if (myresponse_json.iframe_src) {
+            membership_content_NodeList[dynamic_section_index].querySelector(".section-title").classList.add('hidden') // hide template title.
+            if (myresponse.status == 200) {
                 // Only show if the fame is available
                 membership_content_NodeList[dynamic_section_index].classList.remove("hidden")
             }
