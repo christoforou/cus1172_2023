@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     embedding_section_indexs = []
     
     for (let i = 0; i < membership_content_NodeList.length; i++) {
-        section_titles.push(membership_content_NodeList[i].querySelector("h1, h2, p").innerText)
+        section_titles.push(membership_content_NodeList[i].querySelector("h1, h2, h3,  p").innerText)
         
         if (section_titles[i].includes(dynamic_content_pattern)){
             dynamic_content_sections_indexes.push(i)
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', async function() {
           if (editing_mode) {
             // Do not inject. 
             console.log("In Edit mode, do not inject the text")
-            membership_content_NodeList[dynamic_section_index].querySelector("h1, h2, p").innerText = dynamic_content_pattern + dynamic_content_JSON.title
+            membership_content_NodeList[dynamic_section_index].querySelector("h1, h2,h3, p").innerText = dynamic_content_pattern + dynamic_content_JSON.title
             membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").append(newElement)
             membership_content_NodeList[dynamic_section_index].classList.remove("hidden")
         
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', async function() {
           } else {   
             // Erase existing contnet in dyamic section, update title, inject content.
             membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").innerHTML = ""
-            membership_content_NodeList[dynamic_section_index].querySelector("h1, h2, p").innerText = dynamic_content_JSON.title
+            membership_content_NodeList[dynamic_section_index].querySelector("h1, h2, h3, p").innerText = dynamic_content_JSON.title
             
             membership_content_NodeList[dynamic_section_index].querySelector(".section-paragraph").append(newElement)
             membership_content_NodeList[dynamic_section_index].querySelector(".section-title").classList.add('hidden') // hide template title.
